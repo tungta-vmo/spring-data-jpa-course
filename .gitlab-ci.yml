@@ -10,3 +10,5 @@ build-docker:
     - cd /home/centos/spring-data-jpa-course
     - docker build -t registry.git.vmo.dev/c11/c11-private/devops/java-devops-learning:$CI_COMMIT_SHORT_SHA .
     - docker push registry.git.vmo.dev/c11/c11-private/devops/java-devops-learning:$CI_COMMIT_SHORT_SHA
+  tags:
+    - devops-learning-java
