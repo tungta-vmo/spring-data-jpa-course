@@ -10,11 +10,11 @@ install_dependencies:
     refs:
       - dev
   script:
-    - mvn -Dmaven.repo.local=./.m2 verify clean --fail-never
+    - mvn -Dmaven.repo.local=/opt/.m2 verify clean --fail-never
   cache:
     key: $CI_COMMIT_BRANCH
     paths:
-      - .m2
+      - /opt/.m2
   tags:
     - devops-learning-java
 
