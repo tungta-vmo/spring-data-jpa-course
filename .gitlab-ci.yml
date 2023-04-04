@@ -1,6 +1,20 @@
 stages:
+  - install
   - build
 
+install_dependencies:
+  stage: install
+  only:
+    changes:
+      - pom.xml
+    refs:
+      - dev
+  script:
+    - mvn -Dmaven.repo.local=./.m2 verify clean --fail-never
+  cache:
+    key: $CI_COMMIT_BRANCH
+    paths:
+      - .m2
 
 build-docker:
   stage: build
@@ -12,3 +26,4 @@ build-docker:
     - docker push registry.git.vmo.dev/c11/c11-private/devops/java-devops-learning:$CI_COMMIT_SHORT_SHA
   tags:
     - devops-learning-java
+    - vmo
