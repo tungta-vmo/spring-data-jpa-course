@@ -1,0 +1,12 @@
+stages:
+  - build
+
+
+build-docker:
+  stage: build
+  only:
+    - dev
+  script:
+    - cd /home/centos/spring-data-jpa-course
+    - docker build -t registry.git.vmo.dev/c11/c11-private/devops/java-devops-learning:$CI_COMMIT_SHORT_SHA .
+    - docker push registry.git.vmo.dev/c11/c11-private/devops/java-devops-learning:$CI_COMMIT_SHORT_SHA
